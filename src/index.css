@@ -66,3 +66,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@font-face {
+  font-family: '德彪钢笔行书字库';
+  src:
+          url("./assets/德彪钢笔行书字库.otf") format("opentype");
+}
