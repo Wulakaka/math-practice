@@ -1,4 +1,6 @@
-export default function Cell({children}: {children: string}) {
+export default function Cell({children}: {children: string | number | undefined}) {
+    const isNumber = typeof children === 'number'
+    const text = (children ?? '').toString().padStart(2).split('')
 
     return (
         <svg width="100" height="100" viewBox="-0.5,-0.5,100,100" className="-mr-[1px]">
@@ -7,7 +9,13 @@ export default function Cell({children}: {children: string}) {
                 <line x1="0" y1="50" x2="100" y2="50" ></line>
                 <line x1="50" y1="0" x2="50" y2="100"></line>
             </g>
-            <text fontSize="120" dy="0.35em" y="50" fontFamily="德彪钢笔行书字库">{children}</text>
+            <g textAnchor="middle" fontFamily="苹方" fontSize="90">
+                { isNumber && <>
+                    <text x="25" dy="0.35em" y="50">{text[0]}</text>
+                    <text x="75" dy="0.35em" y="50">{text[1]}</text>
+                </>}
+                {!isNumber && <text x="50" dy="0.35em" y="50">{text[1]}</text>}
+            </g>
         </svg>
     )
 

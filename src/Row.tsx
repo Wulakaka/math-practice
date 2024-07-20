@@ -1,6 +1,6 @@
 import Cell from "./Cell.tsx";
 
-export default function Row({row}: {row: string[]}) {
+export default function Row({row}: {row: (string | number)[]}) {
     return (
         <div className="flex">
             {
