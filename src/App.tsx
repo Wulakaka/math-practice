@@ -1,11 +1,10 @@
-
 import './App.css'
 import Row from "./Row.tsx";
 
 function getRow(max: number, operators: ('+' | '-')[]) {
 
-    function get(max: number, operator: '+' | '-'): [number,number] {
-        let first,second, result
+    function get(max: number, operator: '+' | '-'): [number, number] {
+        let first, second, result
         switch (operator) {
             case '+':
                 result = Math.round(Math.random() * max)
@@ -31,7 +30,7 @@ function getRow(max: number, operators: ('+' | '-')[]) {
 
 
     const operator = operators[Math.floor(Math.random() * operators.length)]
-    const [first, second] = get(max,operator)
+    const [first, second] = get(max, operator)
 
     return [first, operator, second, '=']
 
@@ -40,17 +39,17 @@ function getRow(max: number, operators: ('+' | '-')[]) {
 
 function App() {
 
-    const rows = Array(20).fill(0).map(() => getRow(30, ['+', '-']))
+    const rows = Array(40).fill(0).map(() => getRow(30, ['+', '-']))
 
-  return (
-      <>
-          <div className="grid grid-cols-2 gap-5">
+    return (
+        <>
+            <div className="grid grid-cols-4 gap-5 grid-rows-10 h-[100vh]">
 
-              {rows.map((row, i) => <Row key={i} row={row} />)}
-          </div>
+                {rows.map((row, i) => <Row key={i} row={row}/>)}
+            </div>
 
-      </>
-  )
+        </>
+    )
 }
 
 export default App
