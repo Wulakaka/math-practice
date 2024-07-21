@@ -4,17 +4,14 @@ import Row from "./Row.tsx";
 function getRow(max: number, operators: ('+' | '-')[]) {
 
     function get(max: number, operator: '+' | '-'): [number, number] {
-        let first, second, result
+        const result = Math.round(Math.random() * 10) + max - 10
+        const first = Math.round(Math.random() * result)
+        const second = result - first
         switch (operator) {
             case '+':
-                result = Math.round(Math.random() * max)
-                first = Math.round(Math.random() * result)
-                second = result - first
                 return [first, second]
             case '-':
-                first = Math.round(Math.random() * max)
-                second = Math.round(Math.random() * first)
-                return [first, second]
+                return [result, first]
             // case '*':
             //     result = Math.round(Math.random() * max)
             //     first = Math.round(Math.random() * result)
