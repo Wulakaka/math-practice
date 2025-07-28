@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-5 grid-rows-10 h-[100vh]">
+      <div className="grid grid-cols-4 gap-5 grid-rows-10 h-[100vh] px-2">
         {rows.map((row, i) => (
           <Row key={i} row={row} />
         ))}
