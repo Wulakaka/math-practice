@@ -3,9 +3,16 @@ import Row from './Row.tsx'
 
 function getRow(max: number, operators: ('+' | '-')[]) {
   function get(max: number, operator: '+' | '-'): [number, number] {
-    const diff = 20
-    const result = Math.round(Math.random() * diff) + max - diff
-    const first = Math.round(Math.random() * result)
+    const resultMin = max * 0.5
+    const resultMax = max
+    const result = Math.round(
+      Math.random() * (resultMax - resultMin) + resultMin,
+    )
+
+    const firstMin = result * 0.5
+    const firstMax = result * 0.8
+
+    const first = Math.round(Math.random() * (firstMax - firstMin) + firstMin)
     const second = result - first
     switch (operator) {
       case '+':
@@ -33,7 +40,7 @@ function getRow(max: number, operators: ('+' | '-')[]) {
 function App() {
   const rows = Array(40)
     .fill(0)
-    .map(() => getRow(80, ['+', '-']))
+    .map(() => getRow(99, ['+', '-']))
 
   return (
     <>
